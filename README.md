@@ -1,18 +1,25 @@
 # Disklavier
 
-To start your Phoenix server:
+When starting this app it will take a minute or two to scrape
+all of the data from Disklavier's website. This repo doesn't
+use a database, only puts the data into ETS so every time you bounce
+the server it will block on getting that data.
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## Get started
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+```bash
+> mix deps.get
+> mix phx.server
+```
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Open the Xcode project:
 
-## Learn more
+```terminal
+> open native/swiftui/Disklavier.xcodeproj
+```
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Make sure that the non-watch target and TvOS simulator are chosen:
+
+You may need to "Trust & Enable" a few times.
+
+Compile and run.
