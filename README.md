@@ -20,6 +20,8 @@ Open the Xcode project:
 
 Make sure that the non-watch target and TvOS simulator are chosen:
 
+<img width="453" alt="Screenshot 2024-05-15 at 10 57 25 AM" src="https://github.com/DockYard/disklavier/assets/18524/d245b772-5d54-498b-9b55-09db3ebe0253">
+
 You may need to "Trust & Enable" a few times.
 
 Compile and run.
