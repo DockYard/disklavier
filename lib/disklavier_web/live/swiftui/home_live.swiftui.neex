@@ -1,0 +1,19 @@
+<ScrollView class="toolbar_content">
+  <.input class="pickerStyle(.menu) frame(maxWidth:.infinity) focusSection()" phx-change="category_choice" type="Picker" name="categories" value={@category_id} options={@categories} />
+  <LazyVGrid columns='[{"size":{"adaptive":{"minimum":400}}}]'>
+    <.link class="buttonStyle(.borderless)" :for={song <- @songs} navigate={~p"/songs/#{song["id"]}"} >
+      <VStack>
+        <.image class="frame(width:400,height:300)" url={song["poster_url"]} >
+          <:success class="resizable() scaledToFit()" />
+          <:empty>
+            <Rectangle class="foregroundStyle(.tint)" />
+          </:empty>
+          <:failure>
+            <Rectangle class="foregroundStyle(.red)" />
+          </:failure>
+        </.image>
+        <Text class="lineLimit(1)"><%= song["title"] %></Text>
+      </VStack>
+    </.link>
+  </LazyVGrid>
+</ScrollView>

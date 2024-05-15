@@ -1,0 +1,45 @@
+<VStack alignment="leading" class="song_poster">
+  <.image template="poster_image" class="ignoresSafeArea()" url={@song["poster_url"]}>
+    <:success class="resizable() scaledToFill()" />
+  </.image>
+
+  <Text class="bold() font(.title)" ><%= @song["title"] %></Text>
+
+  <Spacer/>
+
+  <HStack alignment="top" class={[
+    "frame(maxWidth:.infinity,alignment:.bottomLeading)",
+    "padding(.top,128)",
+    "blur-bg"
+  ]}>
+    <.link navigate={~p"/songs/#{@song["id"]}/play"}>
+        <Label systemImage="play.fill">Play</Label>
+    </.link>
+    <VStack alignment="leading">
+        <.button phx-click="show_modal" class="buttonStyle(.borderless) tint(.secondary) padding(.bottom,8) lineLimit(4)">
+            <Text class="font(.body) bold(false)" markdown={@song["description"]} />
+        </.button>
+        <.modal on_cancel="dismiss_modal" show={@show} id="description">
+            <Text markdown={@song["description"]} />
+        </.modal>
+        <Text class="font(.caption) foregroundStyle(.secondary)">Category • 1 hr 30 min</Text>
+    </VStack>
+    <VStack alignment="leading" class="fixedSize(horizontal:true,vertical:false)">
+        <LabeledContent>
+            <Text><%= @song["artist"] %></Text>
+            <Text template="label">Composer</Text>
+        </LabeledContent>
+    </VStack>
+    <Rectangle template="blur_bg" class={[
+        "fill(.ultraThinMaterial)",
+        "mask-rectangle",
+        "ignoresSafeArea()"
+    ]}>
+        <Rectangle template="mask_bg" class={[
+            "fill(.linearGradient(colors:[.clear,.black],startPoint:.top,endPoint:.center))"
+        ]}/>
+
+    </Rectangle>
+  </HStack>
+
+</VStack>
